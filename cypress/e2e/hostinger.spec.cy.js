@@ -1,5 +1,6 @@
 const LandingPage = require('../../screenobjects/landing.page');
 const CartPage = require('../../screenobjects/cart.page');
+const card1 = require('../../fixtures/payment.cards');
 const uuid = require("uuid");
 
 beforeEach(() => {
@@ -23,10 +24,10 @@ describe('Hostinger Homework Spec', () => {
     CartPage.preTaxDiscount.should('have.text', ' -$228.00')
     CartPage.totalPriceBeforeDiscount.should('have.text', '$406.27')
     CartPage.totalPriceAfterDiscount.should('have.text', '$130.39')
-    CartPage.cardHolderNameInput.type('Test User')
-    CartPage.cardNumberInput.type(4111111111111111)
-    CartPage.cardExpirationInput.type(1126)
-    CartPage.cardCvcInput.type(123)
+    CartPage.cardHolderNameInput.type(card1.cardHolder)
+    CartPage.cardNumberInput.type(card1.cardNumber)
+    CartPage.cardExpirationInput.type(card1.expirationDate)
+    CartPage.cardCvcInput.type(card1.cvv)
     CartPage.submitPaymentButton.click()
     CartPage.paymentOverviewDialog.should('exist', { timeout: 10000 })
   })
