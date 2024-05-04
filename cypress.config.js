@@ -4,6 +4,5 @@ module.exports = defineConfig({
   chromeWebSecurity: false,
   e2e: {
     supportFile: false,
-    testIsolation: true,
   },
 });

@@ -1,0 +1,22 @@
+{
+  "name": "hostingerhomework",
+  "version": "1.0.0",
+  "description": "Homework for Hostinger",
+  "main": "cypress.config.js",
+  "scripts": {
+    "test": "npx cypress run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/willjurgelevicius/hostingerHomework.git"
+  },
+  "author": "Vilius Jurgelevicius",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/willjurgelevicius/hostingerHomework/issues"
+  },
+  "homepage": "https://github.com/willjurgelevicius/hostingerHomework#readme",
+  "devDependencies": {
+    "cypress": "^13.8.1"
+  }
+}
