@@ -1,6 +1,6 @@
 const LandingPage = require('../../screenobjects/landing.page');
 const CartPage = require('../../screenobjects/cart.page');
-const card1 = require('../../fixtures/payment.cards');
+const { card1 } = require('../../fixtures/payment.cards');
 const { businessTier } = require('../../fixtures/hosting.tiers');
 const { twentyFourMonths } = require('../../fixtures/hosting.periods');
 const uuid = require("uuid");
@@ -24,9 +24,9 @@ describe('Hostinger Homework Spec', () => {
     CartPage.taxes.should('have.text', '$22.63')
     CartPage.totalPriceBeforeDiscount.should('have.text', '$406.27')
     CartPage.totalPriceAfterDiscount.should('have.text', '$130.39')
-    CartPage.cardHolderNameInput.type(card1.cardHolder)
-    CartPage.cardNumberInput.type(card1.cardNumber)
-    CartPage.cardExpirationInput.type(card1.expirationDate)
+    CartPage.cardHolderNameInput.type(card1.holder)
+    CartPage.cardNumberInput.type(card1.number)
+    CartPage.cardExpirationInput.type(card1.exp)
     CartPage.cardCvcInput.type(card1.cvv)
     CartPage.submitPaymentButton.click()
     CartPage.paymentOverviewDialog.should('exist', { timeout: 10000 })
