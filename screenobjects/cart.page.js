@@ -44,6 +44,10 @@ class CartPage {
         return this.discounts.eq(0).find('h4');
     }
 
+    get taxes() {
+        return this.discounts.eq(1).find('h4');
+    }
+
     get totalPriceSummary() {
         return this.paymentOverviewDialog.find('.hcart-estimate__total');
     }
@@ -64,16 +68,20 @@ class CartPage {
         return this.paymentForm.find('#cardholdername');
     }
 
+    get paymentInputIframe() {
+        return cy.get('iframe[class="processout-field-cc-iframe"]');
+    }
+
     get cardNumberInput() {
-        return cy.get('iframe[class="processout-field-cc-iframe"]').its('0.contentDocument').find('[name="cc-number"]');
+        return this.paymentInputIframe.its('0.contentDocument').find('[name="cc-number"]');
     }
 
     get cardExpirationInput() {
-        return cy.get('iframe[class="processout-field-cc-iframe"]').its('1.contentDocument').find('[name="cc-exp"]');
+        return this.paymentInputIframe.its('1.contentDocument').find('[name="cc-exp"]');
     }
 
     get cardCvcInput() {
-        return cy.get('iframe[class="processout-field-cc-iframe"]').its('2.contentDocument').find('[name="cc-cvc"]');
+        return this.paymentInputIframe.its('2.contentDocument').find('[name="cc-cvc"]');
     }
 
     get submitPaymentButton() {
