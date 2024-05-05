@@ -1,3 +1,4 @@
+const Helpers = require('../../utils/helpers');
 const LandingPage = require('../../screenobjects/landing.page');
 const CartPage = require('../../screenobjects/cart.page');
 const { card1 } = require('../../fixtures/payment.cards');
@@ -6,11 +7,14 @@ const HostingPeriods = require('../../fixtures/hosting.periods');
 const uuid = require("uuid");
 
 before(() => {
-  //Expand the viewport slightly, visit homepage and accept all cookies
-  cy.viewport(1280, 720);
+
+  //Kept having issues with the tests starting and staying logged in. Cypress testIsolation is set to true, but still had issues, so I'm forcing a clear here.
   cy.clearAllCookies()
   cy.clearAllLocalStorage()
   cy.clearAllSessionStorage()
+
+  //Expand the viewport slightly and visit homepage
+  cy.viewport(1280, 720);
   cy.visit('https://hostinger.com')
   LandingPage.acceptAllCookiesButton.click()
 })
@@ -23,8 +27,8 @@ describe('Hostinger Homework Spec', () => {
     const hostingPeriod = HostingPeriods.twentyFourMonths
 
     // Select the hosting tier and period
-    LandingPage.addToCartButton(hostingTier.selector).click()
-    CartPage.periodSelection(hostingPeriod.selector).click()
+    Helpers.addToCartButton(hostingTier.selector).click()
+    Helpers.periodSelection(hostingPeriod.selector).click()
 
     // Fill in email and password
     CartPage.emailInput.type(uuid.v4() + '@gmail.com')
@@ -50,4 +54,10 @@ describe('Hostinger Homework Spec', () => {
     //(got varying errors back from the payment gateway)
     CartPage.paymentOverviewDialog.should('exist', { timeout: 10000 })
   })
+})
+
+after(() => {
+  cy.clearAllCookies()
+  cy.clearAllLocalStorage()
+  cy.clearAllSessionStorage()
 })

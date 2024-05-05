@@ -1,3 +1,6 @@
+/**
+ * Page object representing the Cart page with methods to interact with elements on the page.
+ */
 class CartPage {
 
     get accountCreationDialog() {
@@ -12,10 +15,6 @@ class CartPage {
         return this.accountCreationDialog.find('div[class*=login__password]');
     }
 
-    periodSelection(periodType) {
-        return cy.get('div[id=hcart-cart-period-selector]').contains(periodType);
-    }
-
     get paymentOverviewDialog() {
         return cy.get('#payment-overview');
     }
@@ -24,40 +23,39 @@ class CartPage {
         return this.paymentOverviewDialog.find('.d-none > .plan-info__plan-name');
     }
 
-    get pricingEstimate() {
+    get pricingSection() {
         return this.paymentOverviewDialog.find('div[class^=pricing]');
     }
 
     get oldPrice() {
-        return this.pricingEstimate.find('.old-price');
+        return this.pricingSection.find('.old-price');
     }
 
     get newPrice() {
-        return this.pricingEstimate.find('h4');
+        return this.pricingSection.find('h4');
     }
 
-    get discounts() {
+    get discountsSection() {
         return this.paymentOverviewDialog.find('.hcart-estimate__discounts');
     }
-
     get preTaxDiscount() {
-        return this.discounts.eq(0).find('h4');
+        return this.discountsSection.eq(0).find('h4');
     }
 
     get taxes() {
-        return this.discounts.eq(1).find('h4');
+        return this.discountsSection.eq(1).find('h4');
     }
 
-    get totalPriceSummary() {
+    get totalPriceSection() {
         return this.paymentOverviewDialog.find('.hcart-estimate__total');
     }
 
     get totalPriceBeforeDiscount() {
-        return this.totalPriceSummary.find('div[class=old-price]');
+        return this.totalPriceSection.find('div[class=old-price]');
     }
 
     get totalPriceAfterDiscount() {
-        return this.totalPriceSummary.find('h3[class^=hcart-estimate__price]');
+        return this.totalPriceSection.find('h3[class^=hcart-estimate__price]');
     }
 
     get paymentForm() {
