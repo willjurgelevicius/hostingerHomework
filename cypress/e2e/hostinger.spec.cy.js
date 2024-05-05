@@ -31,7 +31,8 @@ describe('Hostinger Homework Spec', () => {
     Helpers.addToCartButton(hostingTier.selector).click()
     Helpers.periodSelection(hostingPeriod.selector).click()
 
-    // Fill in email and password
+    // Wait for account creation dialog to be visible, then fill in email and password
+    CartPage.accountCreationDialog.should('be.visible')
     CartPage.emailInput.type(CredentialGenerator.generateEmail('gmail.com'))
     CartPage.passwordInput.type(CredentialGenerator.generatePassword())
 
@@ -44,7 +45,8 @@ describe('Hostinger Homework Spec', () => {
     CartPage.totalPriceBeforeDiscount.should('have.text', '$406.27')
     CartPage.totalPriceAfterDiscount.should('have.text', '$130.39')
 
-    // Fill in payment details and click submit payment button
+    // Validate that the payment input dialog is visible, fill in payment details and click submit payment button
+    CartPage.paymentInputIframe.should('be.visible')
     CartPage.cardHolderNameInput.type(card1.holder)
     CartPage.cardNumberInput.type(card1.number)
     CartPage.cardExpirationInput.type(card1.exp)
