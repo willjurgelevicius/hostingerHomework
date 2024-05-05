@@ -1,3 +1,15 @@
+/**
+ * Object representing hosting periods with interactive comments.
+ * @typedef {Object} HostingPeriod
+ * @property {string} selector - The selector value for the hosting period.
+ * @property {string} displayName - The display name of the hosting period.
+ */
+
+/**
+ * Object containing hosting periods and their details.
+ * @type {Object<string, HostingPeriod>}
+ */
+
 const hostingPeriods = {
     oneMonth: {
         selector: "1 month",

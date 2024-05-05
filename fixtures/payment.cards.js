@@ -1,3 +1,17 @@
+/**
+ * Module representing credit card details for testing purposes.
+ * @typedef {Object} CreditCard
+ * @property {string} holder - The cardholder's name.
+ * @property {string} number - The card number.
+ * @property {string} exp - The card expiration date.
+ * @property {string} cvv - The card CVV code.
+ */
+
+/**
+ * Object containing credit card details for testing.
+ * @type {Object<string, CreditCard>}
+ */
+
 const creditCards = {
     card1: {
         holder: 'Test User',
